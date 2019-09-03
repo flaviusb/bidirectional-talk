@@ -224,7 +224,8 @@ map: ∀x.∀y. List x → (x → y) → List y
 ## Functional modules
 
 ```
-map: ∀container: (type→type). ∀x. ∀y. (container x) → (x → y) → (container y).
+map: ∀container: (type→type).
+	∀x. ∀y. (container x) → (x → y) → (container y).
 ```
 </textarea>
 </section>
@@ -233,7 +234,8 @@ map: ∀container: (type→type). ∀x. ∀y. (container x) → (x → y) → (c
 ## Functional modules
 
 ```
-map: ∀container: (type→type) and container is mappable. ∀x. ∀y. (container x) → (x → y) → (container y).
+map: ∀container: (type→type) and container is mappable.
+	∀x. ∀y. (container x) → (x → y) → (container y).
 ```
 </textarea>
 </section>
@@ -242,14 +244,17 @@ map: ∀container: (type→type) and container is mappable. ∀x. ∀y. (contain
 ## Functional modules
 
 ```
-map: ∀container:(type→type). ∃mapFn∋mappable container. mapFn.
+map: ∀container:(type→type).
+	∃mapFn∋mappable container. mapFn.
 map {mapFn} = mapFn
 
 data List x = Cons x (List x) | Nil
 mapList (Cons x y) f = Cons (f x) (map y f)
 mapList Nil f = Nil
 
-mappable: ∀container:(type→type).∀x.∀y.∃map∋((container x) → (x → y) → (container y)). container → map
+mappable: ∀container:(type→type).
+	∀x.∀y.∃map∋((container x) → (x → y) → (container y)).
+	container → map
 mappable {map} container = map
 
 implicit mappableList = mappable {mapList} List
@@ -276,7 +281,6 @@ implicit mappableList = mappable {mapList} List
 			// - https://github.com/hakimel/reveal.js#configuration
 			// - https://github.com/hakimel/reveal.js#dependencies
 			Reveal.initialize({
-				width: 1280,
 				dependencies: [
 					{ src: 'plugin/markdown/marked.js' },
 					{ src: 'plugin/markdown/markdown.js' },
